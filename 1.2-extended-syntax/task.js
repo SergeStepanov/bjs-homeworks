@@ -20,15 +20,31 @@ function getResult(a, b, c) {
 function getAverageMark(marks) {
   // код для задачи №2 писать здесь
 
-  let averageMark = marks / marks.length;
+  let len = marks.length;
+  let averageMark = marks / len;
 
-  if (marks.length === 0) {
+  if (len === 0) {
     averageMark = 0;
-  } else if (marks.length <= 5) {
   }
-  // console.log(
-  //   `Количество оценок больше 5. Счтитаеся ср. оценка только первых 5-ти оценок.`
-  // );
+
+  let sum = 0;
+
+  for (let i = 0; i < len && len <= 5; i++) {
+    sum += marks[i];
+    averageMark = sum / len;
+  }
+
+  if (len > 5) {
+    console.log(
+      `Количество оценок больше 5. Счтитаеся ср. оценка только первых 5-ти оценок.`
+    );
+  }
+
+  for (let i = 0; i < 5 && len > 5; i++) {
+    marks.splice(5);
+    sum += marks[i];
+    averageMark = sum / 5;
+  }
 
   return averageMark;
 }
@@ -36,9 +52,18 @@ function getAverageMark(marks) {
 function askDrink(name, dateOfBirthday) {
   // код для задачи №3 писать здесь
 
-  let newDate = {};
+  let today = new Date();
+  let year = today.getFullYear();
+  let yearBirthday = dateOfBirthday.getFullYear();
+  let result = year - yearBirthday;
 
-  function getFullYear() {}
+  if (result >= 18) {
+    alert(`Не желаете ли олд-фэшн, ${name}?`);
+  } else {
+    alert(
+      `Сожалею, ${name}, но я не могу вам продать алкоголь. Могу предложить вам замечательный клюквенный компот!`
+    );
+  }
 
-  // return result;
+  return result;
 }
