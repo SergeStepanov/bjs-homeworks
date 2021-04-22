@@ -1,4 +1,4 @@
-'user strict';
+'use strict';
 
 function getSolutions(a, b, c) {
   let D = b ** 2 - 4 * a * c;
